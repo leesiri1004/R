@@ -80,4 +80,13 @@ switch(empname,
 
 
 #교재 p114 실습 - 벡터에서 which() 사용:index 값을 반환
+name <- c("kim", "lee", "choi", "park")
+which(name == "choi")
+
+
 #교재 p114 실습 - 데이터프레임에서 which() 사용
+no <- c(1:5)
+name <- c("홍길동", "이순신", "강감찬", "유관순", "김유신")
+score <- c(85, 78, 89, 90, 74)
+exam <- data.frame(학번 = no, 이름 = name, 성적 = score)
+exam
