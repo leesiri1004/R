@@ -93,12 +93,53 @@ gugu(i, j)
 
 #교재 p122 실습 - 결측치를 포함하는 자료를 대상으로 평균구하기
 #단계 1: 결측치(NA)를 포함하는 데이터 생성
-data <- c(10, 20, 5, 4, 40, 7)
+data <- c(10, 20, 5, 4, 40, 7, NA, 6, 3, NA, 2, NA)  #sum: 97
+
+#단계 2: 결측치 데이터를 처리하는 함수 정의
+na <- function(x){
+  #1차: NA 제거
+  print(x)
+  print(mean(x, na.rm = T))
+
+#2차: NA를 0으로 대체
+data = ifelse(!is.na(x), x, 0)
+print(data)
+print(mean(data))
+
+#3차: NA를 평균으로 대체
+data2 = ifelse(!is.na(x), x, round(mean(x, na.rm = TRUE), 2))
+print(data2)
+print(mean(data2))
+}
+
+#단계 3: 결측치 처리를 위한 사용자 함수 호출
+na(data)  #함수 호출
+
 
 #교재 p126 실습 - 기술통계량 관련 내장함수 사용하기
+seq(-2, 2, by = .2)  #-2 ~ 2 범위에서 0.2씩 증가
+vec <- 1:10
+min(vec)             #최소값
+max(vec)             #최대값
+range(vec)           #범위
+mean(vec)            #평균
+median(vec)          #중위수
+sum(vec)             #합계
+sd(rnorm(10))        #정규분표 자료 10개(무작위 추출)를 대상으로 표준편차 구하기
+table(vec)           #벡터 자료 대상으로 빈도수 구하기
+
+
 #교재 p126 실습 - 정규분포(연속형)의 난수 생성하기
+n <- 1000
+rnorm(n, mean = 0, sd = 1)
+hist(rnorm(n, mean = 0, sd = 1))
+
 
 #교재 p127 실습 - 균등분포(연속형)의 난수 생성하기
+n <- 1000
+runif(n, min = 0, max = 10)
+hist(runif(n, min = 0, max = 10))
+
 
 #교재 p128 실습 - 이항분포(이산형)의 난수 생성하기
 #교재 p128 실습 - 종자값으로 동일한 난수 생성하기
